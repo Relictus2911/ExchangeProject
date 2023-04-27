@@ -1,8 +1,7 @@
 ﻿using ExchangeProject.Database;
 using ExchangeProject.Database.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Data.Entity;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExchangeProject.Web.Controllers
 {

@@ -1,11 +1,6 @@
 ﻿using ExchangeProject.Database;
 using ExchangeProject.Database.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
-using System.Linq;
-using System.Reflection.Emit;
 
 namespace ExchangeProject.UpdateDatabase
 {
@@ -19,7 +14,7 @@ namespace ExchangeProject.UpdateDatabase
             ExchangeProjectContext exchangeRateContext = new ExchangeProjectContext(optionsBuilder.Options);
             try
             {
-                using HttpResponseMessage response = await client.GetAsync("https://www.cnb.cz/en/financial_markets/foreign_exchange_market/exchange_rate_fixing/year.txt?year=2022" /*+ DateTime.Now.Year*/);
+                using HttpResponseMessage response = await client.GetAsync("https://www.cnb.cz/en/financial_markets/foreign_exchange_market/exchange_rate_fixing/year.txt?year=" + DateTime.Now.Year);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var lines = responseBody.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
